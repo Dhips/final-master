@@ -37,7 +37,7 @@ const HelpPage = () => (
             <br></br>
         </h2>
        <h1 textAlign='center'>Watch the video below if you want to learn more!</h1>
-       <YoutubeEmbed embedId="rokGy0huYEA" />
+       <YoutubeEmbed embedId="D60LPXcfQHY" />
     </div>
 );
 
