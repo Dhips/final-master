@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import './index.css';
-import UNM_Logo from '../../images/UNM_Logo.jpg';
+import MyDSM from '../../images/MyDSM.jpg';
 
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -61,7 +61,7 @@ class PasswordChangeFormBase extends Component{
         return(
             <Container maxWidth='sm'>
                 <div>
-                    <img className ="images" src={UNM_Logo} alt="UNM Logo" />
+                    <img className ="images" src={MyDSM} alt="MyDSM" />
 
                     <h1 className ="title">Password Change</h1> 
 
@@ -72,6 +72,7 @@ class PasswordChangeFormBase extends Component{
                             onChange={this.onChange}
                             variant="outlined"
                             margin="normal"
+                            type="password" 
                             required
                             fullWidth
                             id="password"
@@ -84,7 +85,7 @@ class PasswordChangeFormBase extends Component{
                             onChange={this.onChange}
                             variant="outlined"
                             margin="normal"
-                            required
+                            type="password" 
                             fullWidth
                             id="password"
                             label="Confirm New Password"

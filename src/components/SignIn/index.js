@@ -7,7 +7,7 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import './index.css';
-import UNM_Logo from '../../images/UNM_Logo.jpg';
+import MyDSM from '../../images/MyDSM.jpg';
 
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -64,7 +64,7 @@ class SignInFormBase extends Component {
         return (
              <Container maxWidth='sm'>
                 <div className = "input">
-                    <img src={UNM_Logo} className= "images" alt="UNM Log"/>
+                    <img src={MyDSM} className= "images" alt="MyDSM"/>
 
                     <h1 className = "title">Sign In</h1>          
  
@@ -87,6 +87,7 @@ class SignInFormBase extends Component {
                             onChange={this.onChange}
                             variant="outlined"
                             margin="normal"
+                            type="password" 
                             required
                             fullWidth
                             id="password"

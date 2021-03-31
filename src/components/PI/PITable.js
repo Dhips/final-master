@@ -1,4 +1,4 @@
-//PITable uses the PI selected and asks the user to give importance for a ranking
+//PITable uses the PI selected and asks the user to give ranking for a ranking
 import React, { Component } from 'react';
 import './index.css';
 
@@ -21,16 +21,16 @@ class Counter extends React.Component {
 */
 
 const INITIAL_STATE = {
-  AA: '1.0', AB: '1.0', AC: '1.0', AD: '1.0', AE: '1.0', AF: '1.0', AG: '1.0', AH: '1.0', AI: '1.0', AJ: '1.0',
-  BA: '', BB: '1.0', BC: '1.0', BD: '1.0', BE: '1.0', BF: '1.0', BG: '1.0', BH: '1.0', BI: '1.0', BJ: '1.0', 
-  CA: '', CB: '', CC: '1.0', CD: '1.0', CE: '1.0', CF: '1.0', CG: '1.0', CH: '1.0', CI: '1.0', CJ: '1.0',
-  DA: '', DB: '', DC: '', DD: '1.0', DE: '1.0', DF: '1.0', DG: '1.0', DH: '1.0', DI: '1.0', DJ: '1.0',
-  EA: '', EB: '', EC: '', ED: '', EE: '1.0', EF: '1.0', EG: '1.0', EH: '1.0', EI: '1.0', EJ: '1.0',
-  FA: '', FB: '', FC: '', FD: '', FE: '', FF: '1.0', FG: '1.0', FH: '1.0', FI: '1.0', FJ: '1.0',
-  GA: '', GB: '', GC: '', GD: '', GE: '', GF: '', GG: '1.0', GH: '1.0', GI: '1.0', GJ: '1.0',
-  HA: '', HB: '', HC: '', HD: '', HE: '', HF: '', HG: '', HH: '1.0', HI: '1.0', HJ: '1.0',
-  IA: '', IB: '', IC: '', ID: '', IE: '', IF: '', IG: '', IH: '', II: '1.0', IJ: '1.0',
-  JA: '', JB: '', JC: '', JD: '', JE: '', JF: '', JG: '', JH: '', JI: '', JJ: '1.0',
+  AA: '1', AB: '1', AC: '1', AD: '1', AE: '1', AF: '1', AG: '1', AH: '1', AI: '1', AJ: '1',
+  BA: '', BB: '1', BC: '1', BD: '1', BE: '1', BF: '1', BG: '1', BH: '1', BI: '1', BJ: '1', 
+  CA: '', CB: '', CC: '1', CD: '1', CE: '1', CF: '1', CG: '1', CH: '1', CI: '1', CJ: '1',
+  DA: '', DB: '', DC: '', DD: '1', DE: '1', DF: '1', DG: '1', DH: '1', DI: '1', DJ: '1',
+  EA: '', EB: '', EC: '', ED: '', EE: '1', EF: '1', EG: '1', EH: '1', EI: '1', EJ: '1',
+  FA: '', FB: '', FC: '', FD: '', FE: '', FF: '1', FG: '1', FH: '1', FI: '1', FJ: '1',
+  GA: '', GB: '', GC: '', GD: '', GE: '', GF: '', GG: '1', GH: '1', GI: '1', GJ: '1',
+  HA: '', HB: '', HC: '', HD: '', HE: '', HF: '', HG: '', HH: '1', HI: '1', HJ: '1',
+  IA: '', IB: '', IC: '', ID: '', IE: '', IF: '', IG: '', IH: '', II: '1', IJ: '1',
+  JA: '', JB: '', JC: '', JD: '', JE: '', JF: '', JG: '', JH: '', JI: '', JJ: '1',
   error: null, 
 };
 /*
@@ -204,10 +204,10 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort('importance')}
-              className={getClassNamesFor('importance')}
+              onClick={() => requestSort('ranking')}
+              className={getClassNamesFor('ranking')}
             >
-              Importance Ratio
+              Percentage of Relative Importance
             </button>
           </th>
         </tr>
@@ -228,7 +228,7 @@ const ProductTable = (props) => {
             <td class="ellipsis">{item.production1}</td>
             <td class="ellipsis">{item.production2}</td>            
             <td class="ellipsis">{item.score}</td>
-            <td class="ellipsis">{item.importance}</td>      
+            <td class="ellipsis">{item.ranking}</td>      
           </tr>
         ))}
       </tbody>
@@ -359,8 +359,8 @@ class PITable extends Component {
                 human1: <TextField required label="AH" variant="outlined" name='AH' value={AH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="AI" variant="outlined" name='AI' value={AI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="AJ" variant="outlined" name='AJ' value={AJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ, 
-                importance: AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ/total, 
+                score : (AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ).toFixed(1),
+                ranking: ((AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ/total*100).toFixed(3)+'%'), 
               },
               { id: 2, criteria: '2. Finance', indicators:'Sales Volume Projection (B)' , 
                 finance1: <TextField value={(1/AB).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -373,8 +373,8 @@ class PITable extends Component {
                 human1: <TextField required label="BH" variant="outlined" name='BH' value={BH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="BI" variant="outlined" name='BI' value={BI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="BJ" variant="outlined" name='BJ' value={BJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ, 
-                importance: (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ/total, 
+                score : ((1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ).toFixed(1), 
+                ranking: (((1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ/total*100).toFixed(3)+'%'), 
               },
               { id: 3, criteria: '3. Timeline', indicators:'Overdue Tasks (%) (C)',
                 finance1:<TextField value={(1/AC).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -387,8 +387,8 @@ class PITable extends Component {
                 human1: <TextField required label="CH" variant="outlined" name='CH' value={CH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="CI" variant="outlined" name='CI' value={CI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="CJ" variant="outlined" name='CJ' value={CJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ, 
-                importance: (1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ/total, 
+                score : ((1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ).toFixed(1), 
+                ranking: (((1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ/total*100).toFixed(3)+'%'), 
               },
               { id: 4, criteria: '4. Product Performance', indicators:'Failure Rate (D)',
                 finance1: <TextField value={(1/AD).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -401,8 +401,8 @@ class PITable extends Component {
                 human1: <TextField required label="DH" variant="outlined" name='DH' value={DH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="DI" variant="outlined" name='DI' value={DI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="DJ" variant="outlined" ame='DJ' value={DJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ, 
-                importance: (1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ/total, 
+                score : ((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ).toFixed(1), 
+                ranking: (((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ/total*100).toFixed(3)+'%'), 
               },
               { id: 5, criteria: '5. Product Performance', indicators:'Customer Complaints (E)',
                 finance1: <TextField value={(1/AE).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -415,8 +415,8 @@ class PITable extends Component {
                 human1: <TextField required label="EH" variant="outlined" name='EH' value={EH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="EI" variant="outlined" name='EI' value={EI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="EJ" variant="outlined" name='EJ' value={EJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ, 
-                importance: (1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ/total, 
+                score : ((1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ).toFixed(1), 
+                ranking: (((1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ/total*100).toFixed(3)+'%'), 
               },
               { id: 6, criteria: '6. Brand Performance', indicators:'Market Share (F)' ,
                 finance1: <TextField value={(1/AF).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -429,8 +429,8 @@ class PITable extends Component {
                 human1: <TextField required label="FH" variant="outlined" name='FH' value={FH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="FI" variant="outlined" name='FI' value={FI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="FJ" variant="outlined" name='FJ' value={FJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ, 
-                importance: (1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ/total, 
+                score : ((1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ).toFixed(1), 
+                ranking: (((1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ/total*100).toFixed(3)+'%'), 
               },
               { id: 7, criteria: '7. Brand Performance', indicators:'Market Growth Projection (G)' ,
                 finance1: <TextField value={(1/AG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -443,8 +443,8 @@ class PITable extends Component {
                 human1: <TextField required label="GH" variant="outlined" ame='GH' value={GH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="GI" variant="outlined" name='GI' value={GI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="GJ" variant="outlined" name='GJ' value={GJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ, 
-                importance: (1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ/total, 
+                score : ((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ).toFixed(1), 
+                ranking: (((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ/total*100).toFixed(3)+'%'), 
               },
               { id: 8, criteria: '8. Human Resource', indicators:'Capacity Allocation (H)' ,
                 finance1: <TextField value={(1/AH).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -457,8 +457,8 @@ class PITable extends Component {
                 human1: <TextField required label="HH" variant="outlined" name='HH' value={HH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="HI" variant="outlined" name='HI' value={HI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="HJ" variant="outlined" name='HJ' value={HJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score :(1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ, 
-                importance: (1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ/total, 
+                score :((1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ).toFixed(1), 
+                ranking: (((1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ/total*100).toFixed(3)+'%'), 
               },
               { id: 9, criteria: '9. Production', indicators:'Energy Consumption (I)',
                 finance1: <TextField value={(1/AI).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -471,8 +471,8 @@ class PITable extends Component {
                 human1: <TextField value={(1/HI).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 production1: <TextField required label="II" variant="outlined" name='II' value={II} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="IJ" variant="outlined" name='IJ' value={IJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ, 
-                importance: (1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ/total, 
+                score : ((1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ).toFixed(1), 
+                ranking: (((1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ/total*100).toFixed(3)+'%'), 
               },
               { id: 10, criteria: '10. Production', indicators:'Rework Percentage (J)',
                 finance1: <TextField value={(1/AJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -485,8 +485,8 @@ class PITable extends Component {
                 human1: <TextField value={(1/HJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 production1: <TextField value={(1/IJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 production2: <TextField required label="JJ" variant="outlined" name='JJ' value={JJ} type="number" onChange={this.onChange} margin="normal"/>,
-                score : (1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ, 
-                importance: (1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ/total, 
+                score : ((1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ).toFixed(1), 
+                ranking: (((1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ/total*100).toFixed(3)+'%'), 
               },
               { id: 11, criteria: 'Total Score',
               score :  AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ + (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ + 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes'
 import './index.css';
-import UNM_Logo from '../../images/UNM_Logo.jpg';
+import MyDSM from '../../images/MyDSM.jpg';
 
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -58,7 +58,7 @@ class PasswordForgetFormBase extends Component {
 
         return (
             <div>
-            <img className ="images" src={UNM_Logo} alt="UNM Logo" />
+            <img className ="images" src={MyDSM} alt="MyDSM" />
 
             <h1 className ="title">Forgot Your Password?</h1>
 

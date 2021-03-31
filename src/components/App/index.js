@@ -15,10 +15,15 @@ import Archive from '../Archive';
 import SWOT from '../SWOT';
 import DSM from '../DSM';
 import FeedbackPage from '../Feedback';
+import FAQ from '../FAQ';
+import Documentation from '../Documentation';
 //import NotFound from '../NotFound';
 //<Route component={NotFound}/>
+
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import ContactUs from '../ContactUs';
+
 
 //Provides context for the context.consumer in Navigation
 const App = () => (
@@ -40,6 +45,9 @@ const App = () => (
                 <Route exact path={ROUTES.SWOT} component={SWOT} />           
                 <Route exact path={ROUTES.DSM} component={DSM} />
                 <Route exact path={ROUTES.FEEDBACK} component={FeedbackPage} />
+                <Route exact path={ROUTES.FAQ} component={FAQ} />
+                <Route exact path={ROUTES.DOCUMENTATION} component={Documentation} />
+                <Route exact path={ROUTES.CONTACTUS} component={ContactUs} />
 
         </div>
     </Router>

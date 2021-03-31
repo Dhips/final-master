@@ -11,4 +11,7 @@ export const ARCHIVE = '/archive';
 export const SWOT = '/swot';
 export const DSM = '/dsm';
 export const FEEDBACK = '/feedback';
+export const FAQ = '/faq';
 export const NOTFOUND = '/404';
+export const DOCUMENTATION = '/documentation';
+export const CONTACTUS = '/contactus';

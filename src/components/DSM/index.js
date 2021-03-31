@@ -1,9 +1,7 @@
 //Accumalation of DSM Model
 import React from 'react';
-import SWOT from '../SWOT';
 import PI from '../PI/PI';
 import PITable from '../PI/PITable.js';
-import DSMImg from '../../images/DSM.jpg';
 import PIImg from '../../images/PI.jpg';
 import './index.css';
 
@@ -27,20 +25,12 @@ export default function DSM () {
                     InputProps={{ className: classes.inputRoot }}
                 />
             </Grid>
-            <img 
-                className='image' 
-                src={DSMImg} 
-                alt="Decision Support Model" 
-            />
-            <h1>SWOT</h1>
-            <SWOT />
-            <br></br>
             <br></br>
             <h1 className='title'>Performance Indicator Selection</h1>
             <img className='image' src={PIImg} alt="Performance Indicators" />
             <PI />
             <h1 className='title'>Performance Indicator Ranking</h1>
-            <h2 InputProps={{ className: classes.inputRoot }}>Key in a value between 1.0-5.0 in the required boxes</h2>
+            <h2 InputProps={{ className: classes.inputRoot }}>Key in a value between 1-5 in the required boxes</h2>
             <h2>Click on the importance ratio to rank them</h2>
             <PITable />
             <Grid style = {{textAlign: 'center', padding: '50px'}} >
@@ -52,9 +42,6 @@ export default function DSM () {
         </div>
     );
 }
-
-//<PITable />   
-//<button onClick={() => window.print()}>PRINT</button>
 
 const useStyles = makeStyles(theme => ({
     inputRoot: {

@@ -9,11 +9,13 @@ h2 {
 
 ul {
   list-style-type: none;
+  color: black;
 }
 
 ol {
   padding: 5px;
   text-align: left;
+  color: black;
 }
 
 .images {

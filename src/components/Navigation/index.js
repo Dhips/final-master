@@ -28,6 +28,10 @@ import CreateIcon from '@material-ui/icons/Create';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
 import SearchIcon from '@material-ui/icons/Search';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import TableChartIcon from '@material-ui/icons/TableChart';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 //import HistoryIcon from '@material-ui/icons/History';
 //import BookIcon from '@material-ui/icons/Book';
@@ -103,22 +107,173 @@ function Navigation({ firebase }) {
             </div>
             <Divider />
             <List>
-              <div>
-                <ListItem 
-                button key={"k1"} 
-                component={Link} 
-                to={ROUTES.HOME}>
-                    <ListItemIcon>
-                        <HomeIcon />
-                    </ListItemIcon>
-                    <ListItemText 
+            <AuthUserContext.Consumer>
+              { authUser =>
+                authUser ? (
+                  <div>
+                    <ListItem 
+                    button key={"k1"} 
+                    component={Link} 
+                    to={ROUTES.HOME}>
+                      <ListItemIcon>
+                          <HomeIcon />
+                      </ListItemIcon>
+                      <ListItemText 
+                          primary={"Home"} 
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose} 
+                      />
+                    </ListItem>
+                    <ListItem 
+                      button key={"k2"} 
+                      component={Link}
+                      to = {ROUTES.ACCOUNT}>
+                        <ListItemIcon>
+                          <AccountBoxIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Account"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem>
+                      <ListItem 
+                      button key={"k3"} 
+                      component={Link}
+                      to = {ROUTES.SWOT}
+                      >
+                        <ListItemIcon>
+                          <TableChartIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"SWOT"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem> 
+                      <ListItem 
+                      button key={"k4"} 
+                      component={Link}
+                      to = {ROUTES.DSM}>
+                        <ListItemIcon>
+                          <FiberNewIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"DSM"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem> 
+                      <ListItem 
+                      button key={"k5"} 
+                      component={Link}
+                      to = {ROUTES.FEEDBACK}>
+                        <ListItemIcon>
+                          <FeedbackIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Feedback"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem> 
+                      <ListItem 
+                      button key={"k6"} 
+                      component={Link}
+                      to = {ROUTES.DOCUMENTATION}>
+                        <ListItemIcon>
+                          <InsertDriveFileIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Documentation"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem>
+                      <ListItem 
+                      button key={"k7"} 
+                      component={Link} 
+                      to={ROUTES.HELP}>
+                        <ListItemIcon>
+                            <SearchIcon />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary={"Help & Support"} 
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose} 
+                          />
+                      </ListItem>
+                      <ListItem 
+                      button key={"k8"} 
+                      component={Link} 
+                      to={ROUTES.FAQ}>
+                        <ListItemIcon>
+                            <LiveHelpIcon />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary={"FAQ"} 
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose} 
+                          />
+                      </ListItem>
+                      <ListItem 
+                      button key={"k9"} 
+                      component={Link} 
+                      to={ROUTES.CONTACTUS}>
+                        <ListItemIcon>
+                            <PhoneIcon />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary={"Contact Us"} 
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose} 
+                          />
+                      </ListItem>    
+                      <ListItem 
+                      button key={"k10"} 
+                      onClick={firebase.doSignOut}
+                      >
+                        <ListItemIcon>
+                          <ExitToAppIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Sign Out"}
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose}
+                        />
+                      </ListItem>                    
+                    </div>
+                ) :
+                <div>
+                  <ListItem 
+                    button key={"k11"} 
+                    component={Link} 
+                    to={ROUTES.HOME}>
+                      <ListItemIcon>
+                          <HomeIcon />
+                      </ListItemIcon>
+                      <ListItemText 
                         primary={"Home"} 
                         onClick={handleDrawerClose}
                         onClose={handleDrawerClose} 
                     />
-                </ListItem>
-                <ListItem 
-                    button key={"k2"} 
+                  </ListItem>
+                  <ListItem
+                    button key={"k12"}
+                    component={Link}
+                    to = {ROUTES.SIGN_IN}
+                    >
+                        <ListItemIcon>
+                            <CreateIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                            primary={"Sign In"}
+                            onClick={handleDrawerClose}
+                            onClose={handleDrawerClose}
+                        />
+                    </ListItem>
+                  <ListItem 
+                    button key={"k13"} 
                     component={Link} 
                     to={ROUTES.HELP}>
                       <ListItemIcon>
@@ -130,78 +285,33 @@ function Navigation({ firebase }) {
                         onClose={handleDrawerClose} 
                         />
                     </ListItem>
-              </div>
-            <AuthUserContext.Consumer>
-              { authUser =>
-                authUser ? (
-                  <div>
                     <ListItem 
-                    button key={"k3"} 
-                    component={Link}
-                    to = {ROUTES.ACCOUNT}>
+                    button key={"k14"} 
+                    component={Link} 
+                    to={ROUTES.FAQ}>
                       <ListItemIcon>
-                        <AccountBoxIcon />
+                          <LiveHelpIcon />
                       </ListItemIcon>
-                      <ListItemText
-                        primary={"Account"}
+                      <ListItemText 
+                        primary={"FAQ"} 
                         onClick={handleDrawerClose}
-                        onClose={handleDrawerClose}
-                      />
+                        onClose={handleDrawerClose} 
+                        />
                     </ListItem>
                     <ListItem 
-                    button key={"k4"} 
-                    component={Link}
-                    to = {ROUTES.DSM}>
-                      <ListItemIcon>
-                        <FiberNewIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"DSM"}
-                        onClick={handleDrawerClose}
-                        onClose={handleDrawerClose}
-                      />
-                    </ListItem>  
-                    <ListItem 
-                    button key={"k5"} 
-                    component={Link}
-                    to = {ROUTES.FEEDBACK}>
-                      <ListItemIcon>
-                        <FeedbackIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Feedback"}
-                        onClick={handleDrawerClose}
-                        onClose={handleDrawerClose}
-                      />
-                    </ListItem> 
-                    <ListItem 
-                    button key={"k6"} 
-                    onClick={firebase.doSignOut}
-                    >
-                      <ListItemIcon>
-                        <ExitToAppIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Sign Out"}
-                        onClick={handleDrawerClose}
-                        onClose={handleDrawerClose}
-                      />
-                    </ListItem>                    
-                    </div>
-                ) : 
-                <ListItem
-                button key={"k7"}
-                component={Link}
-                to = {ROUTES.SIGN_IN}>
-                    <ListItemIcon>
-                        <CreateIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                        primary={"Sign In"}
-                        onClick={handleDrawerClose}
-                        onClose={handleDrawerClose}
-                    />
-                </ListItem>
+                      button key={"k15"} 
+                      component={Link} 
+                      to={ROUTES.CONTACTUS}>
+                        <ListItemIcon>
+                            <PhoneIcon />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary={"Contact Us"} 
+                          onClick={handleDrawerClose}
+                          onClose={handleDrawerClose} 
+                          />
+                      </ListItem>
+                </div>
               }
             </AuthUserContext.Consumer>
           </List>
