@@ -1,14 +1,11 @@
 //Background of the project
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import * as ROUTES from "../../constants/routes";
 import './index.css';
 import HomeImg from '../../images/Home.jpg';
 
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import CreateIcon from '@material-ui/icons/Create';
+
 
 const Home = () => (
     <div>
@@ -22,16 +19,7 @@ const Home = () => (
             I implore you to leave some feedback after trying this system out!
         </h3>
         <br></br>
-        <h3 className='hb'>Click here to get started!
-        <ListItem
-        component={Link}
-        to = {ROUTES.SIGN_UP}
-        style = {{paddingLeft: "50%"}}
-        >
-            <ListItemIcon>
-                <CreateIcon />
-            </ListItemIcon>
-        </ListItem> 
+        <h3 className='hb'>Click <Link to="../signup">here</Link> to get started!
         </h3>
         <br></br>
         <h4 className='hd'>

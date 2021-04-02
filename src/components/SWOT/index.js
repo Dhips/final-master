@@ -3,6 +3,7 @@ import React from 'react';
 import SWOT from '../SWOT/table';
 import DSMImg from '../../images/DSM.jpg';
 import './index.css';
+import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -29,7 +30,7 @@ export default function SWOTinput () {
                 src={DSMImg} 
                 alt="Decision Support Model" 
             />
-            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <a href='../help'>help</a> using this page?</h2>
+            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>
             </Grid>
             <SWOT />
             <br></br>
@@ -38,7 +39,7 @@ export default function SWOTinput () {
                 onClick={() => window.print()} >
                     Print this out!
                 </StyledButton>
-                <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '10%', paddingRight: '5%'}}>More detailed SWOT Analaysis, Background and Literary SWOT Documentation can be found <a href='../Documentation'>here</a></h3>
+                <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '5%', paddingRight: '5%'}}>More detailed SWOT Analaysis, Background and Literary SWOT Documentation can be found in <Link to="../documentation">Documentation</Link></h3>
             </Grid>
             
         </div>

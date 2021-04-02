@@ -205,8 +205,8 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort('ranking')}
-              className={getClassNamesFor('ranking')}
+              onClick={() => requestSort('score')}
+              className={getClassNamesFor('score')}
             >
               Percentage of Relative Importance
             </button>
@@ -437,7 +437,7 @@ const data = [
                 brand2: <TextField required label="DG" variant="outlined" name='DG' value={DG} type="number" onChange={this.onChange} margin="normal"/>,
                 human1: <TextField required label="DH" variant="outlined" name='DH' value={DH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="DI" variant="outlined" name='DI' value={DI} type="number" onChange={this.onChange} margin="normal"/>,
-                production2: <TextField required label="DJ" variant="outlined" ame='DJ' value={DJ} type="number" onChange={this.onChange} margin="normal"/>,
+                production2: <TextField required label="DJ" variant="outlined" name='DJ' value={DJ} type="number" onChange={this.onChange} margin="normal"/>,
                 score : ((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ).toFixed(1), 
                 ranking: (((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ/total*100).toFixed(3)+'%'), 
               },
@@ -477,7 +477,7 @@ const data = [
                 product2: <TextField value={(1/EG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 brand1: <TextField value={(1/FG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 brand2: <TextField required label="GG" variant="outlined" name='GG' value={GG} type="number" onChange={this.onChange} margin="normal"/>,
-                human1: <TextField required label="GH" variant="outlined" ame='GH' value={GH} type="number" onChange={this.onChange} margin="normal"/>,
+                human1: <TextField required label="GH" variant="outlined" name='GH' value={GH} type="number" onChange={this.onChange} margin="normal"/>,
                 production1: <TextField required label="GI" variant="outlined" name='GI' value={GI} type="number" onChange={this.onChange} margin="normal"/>,
                 production2: <TextField required label="GJ" variant="outlined" name='GJ' value={GJ} type="number" onChange={this.onChange} margin="normal"/>,
                 score : ((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ).toFixed(1), 
@@ -542,7 +542,7 @@ const data = [
             width={1000}
             height={600}
             data={data}
-            style = {{ paddingTop: '20px',  paddingBottom: '0px', paddingLeft: '5%', paddingRight: '5%'}}
+            style = {{ paddingTop: '20px',  paddingBottom: '0px'}}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />

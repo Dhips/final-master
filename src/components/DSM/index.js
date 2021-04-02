@@ -4,6 +4,7 @@ import PI from '../PI/PI';
 import PITable from '../PI/PITable.js';
 import PIImg from '../../images/PI.jpg';
 import './index.css';
+import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -28,7 +29,7 @@ export default function DSM () {
             <br></br>
             <h1 className='ha'>Performance Indicator Selection</h1>
             <img className='pictur' src={PIImg} alt="Performance Indicators" />
-            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <a href='../help'>help</a> using this page?</h2>
+            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>
             <PI />
             <h1 className='ha'>Performance Indicator Ranking</h1>
             <br></br>
@@ -40,7 +41,7 @@ export default function DSM () {
                 onClick={() => window.print()} >
                     Print this out!
                 </StyledButton>
-            <h2 className='hb' style = {{ paddingTop: '20px',  paddingLeft: '10%', paddingRight: '5%'}}>More detailed Background and Literary PI Documentation can be found <a href='../Documentation'>here</a></h2>
+            <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '14%', paddingRight: '5%'}}>More detailed Background and Literary PI Documentation can be found <Link to="../documentation">Documentation</Link></h3>
             </Grid>
         </div>
     );
