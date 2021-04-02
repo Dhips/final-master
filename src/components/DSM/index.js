@@ -26,18 +26,21 @@ export default function DSM () {
                 />
             </Grid>
             <br></br>
-            <h1 className='title'>Performance Indicator Selection</h1>
-            <img className='image' src={PIImg} alt="Performance Indicators" />
+            <h1 className='ha'>Performance Indicator Selection</h1>
+            <img className='pictur' src={PIImg} alt="Performance Indicators" />
+            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <a href='../help'>help</a> using this page?</h2>
             <PI />
-            <h1 className='title'>Performance Indicator Ranking</h1>
-            <h2 InputProps={{ className: classes.inputRoot }}>Key in a value between 1-5 in the required boxes</h2>
-            <h2>Click on the importance ratio to rank them</h2>
+            <h1 className='ha'>Performance Indicator Ranking</h1>
+            <br></br>
+            <h2 InputProps={{ className: classes.inputRoot }} className='hb'>Key in a value between 1-5 in the '*' boxes</h2>
+            <h2 className='hb'>Then click on the importance ratio to rank them</h2>
             <PITable />
-            <Grid style = {{textAlign: 'center', padding: '50px'}} >
+            <Grid style = {{textAlign: 'center', padding: '50px', marginTop: '-100px', paddingTop: '-10px'}} >    
                 <StyledButton
                 onClick={() => window.print()} >
                     Print this out!
                 </StyledButton>
+            <h2 className='hb' style = {{ paddingTop: '20px',  paddingLeft: '10%', paddingRight: '5%'}}>More detailed Background and Literary PI Documentation can be found <a href='../Documentation'>here</a></h2>
             </Grid>
         </div>
     );

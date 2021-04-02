@@ -60,5 +60,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 th {
-  font-size: 15px;
+  font-size: 12px;
+}
+
+.Graph {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.BarChart {
+  margin-left: 60%;
+  padding-left: 60%;
 }

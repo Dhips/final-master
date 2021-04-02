@@ -15,7 +15,7 @@ export default function SWOTinput () {
 
     return(
         <div className='space'>
-            <h1>SWOT Analysis for </h1>
+            <h1 className='ha'>SWOT Analysis for </h1>
             <Grid style = {{textAlign: 'center'}}>    
                 <TextField 
                     margin="normal" 
@@ -23,20 +23,24 @@ export default function SWOTinput () {
                     inputProps={{min: 0, style: { textAlign: 'center' }}} 
                     InputProps={{ className: classes.inputRoot }}
                 />
-            </Grid>
+            
             <img 
-                className='image' 
+                className='pictur' 
                 src={DSMImg} 
                 alt="Decision Support Model" 
             />
+            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <a href='../help'>help</a> using this page?</h2>
+            </Grid>
             <SWOT />
             <br></br>
-            <Grid style = {{textAlign: 'center', padding: '50px'}} >
+            <Grid style = {{textAlign: 'center'}} >
                 <StyledButton
                 onClick={() => window.print()} >
                     Print this out!
                 </StyledButton>
+                <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '10%', paddingRight: '5%'}}>More detailed SWOT Analaysis, Background and Literary SWOT Documentation can be found <a href='../Documentation'>here</a></h3>
             </Grid>
+            
         </div>
     );
 }

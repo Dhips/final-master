@@ -58,9 +58,9 @@ class PasswordForgetFormBase extends Component {
 
         return (
             <div>
-            <img className ="images" src={MyDSM} alt="MyDSM" />
+            <img className ="pictur" src={MyDSM} alt="MyDSM" />
 
-            <h1 className ="title">Forgot Your Password?</h1>
+            <h1 className ="ha">Forgot Your Password?</h1>
 
             <Container maxWidth='sm'>
                 <div>
@@ -113,7 +113,7 @@ const StyledButton = withStyles({
 
 const PasswordForgetLink = () => (
     <div>
-        <p className = "link">
+        <p style={{ alignText:'center', justifyContent: 'center',  fontSize:'1.5vw', marginBottom: '5px', paddingLeft:'42%', paddingTop:'10px' }}>
         <Link to={ROUTES.PASSWORD_FORGET}><b>Forgot Your Password?</b></Link>
         </p>
     </div>

@@ -8,9 +8,10 @@
   padding-top: 100px;
 }
 
-.link {
+.linkss {
   height: 10px;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   font-size: 2vw;

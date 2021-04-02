@@ -15,16 +15,16 @@ import Grid from '@material-ui/core/Grid';
 
 const AccountPage = () => (
     <AuthUserContext.Consumer>
-        {authUser => (
+        {authUser => ( 
+          <div>
             <div>
-                <h1>Account</h1>
-                <Profile />
-                <h2>
-                <PasswordForgetLink /> 
-                Or
-                <PasswordChangeLink />
-                </h2>
-            </div>   
+              <h1 className='ha'>Account</h1>
+              <Profile />
+              <PasswordForgetLink />
+              <h4 style={{margin:'10px', fontSize: '1.5vw', marginTop:'15px', marginBottom: '15px'}}>or</h4>
+              <PasswordChangeLink />
+            </div>
+          </div>
         )} 
     </AuthUserContext.Consumer>
 );

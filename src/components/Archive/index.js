@@ -6,8 +6,8 @@ import ArchiveImg from '../../images/Archive.jpg';
 
 const Archive = () => (
     <div>
-        <h1>Archive</h1>
-        <img className="images" src={ArchiveImg} alt="Archive" />
+        <h1 className ='ha'>Archive</h1>
+        <img className="pictur" src={ArchiveImg} alt="Archive" />
     </div>
 );
 

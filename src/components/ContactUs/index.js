@@ -1,30 +1,16 @@
 import React from 'react'
-import ApexCharts from 'apexcharts'
+
+import Contact from '../../images/Contact.jpg';
+import './index.css';
 
 export default function ContactUs() {
     return (
         <div>
-            <h1>Helu</h1>
+            <h1 className='ha'>Contact Us</h1>
+            <img className="pictur" src={Contact} alt="Contact" />
+            <br></br>
+            <h3 className='hb'>Drop us an <a href="mailto:s.dhipanraj@gmail.com" target="_blank" rel="noopener noreferrer">email</a>!</h3>
+            <br></br>
         </div>
     )
 }
-
-/*
-var options = {
-    chart: {
-      type: 'bar'
-    },
-    series: [
-      {
-        name: 'sales',
-        data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
-      }
-    ],
-    xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-    }
-  }
-  
-  var chart = new ApexCharts(document.querySelector('#chart'), options)
-  chart.render()
-  */

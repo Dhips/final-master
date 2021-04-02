@@ -4,21 +4,16 @@ import './index.css';
 
 import TextField from '@material-ui/core/TextField';
 import { Container } from '@material-ui/core';
-//import Button from '@material-ui/core/Button';
-//import { withStyles } from '@material-ui/core/styles';
-//import { makeStyles } from "@material-ui/core/styles";
-//import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 
-/*
-class Counter extends React.Component {
-  increment = () => {
-    this.props.dispatch({ type: "INCREMENT "});
-  };
-  decrement = () => {
-    this.props.dispatch({ type: "DECREMENT "});
-  };
-}
-*/
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 const INITIAL_STATE = {
   AA: '1', AB: '1', AC: '1', AD: '1', AE: '1', AF: '1', AG: '1', AH: '1', AI: '1', AJ: '1',
@@ -33,10 +28,16 @@ const INITIAL_STATE = {
   JA: '', JB: '', JC: '', JD: '', JE: '', JF: '', JG: '', JH: '', JI: '', JJ: '1',
   error: null, 
 };
-/*
-score1: '', score2: '', score3: '', score4: '', score5: '', score6: '', score7: '', 
-score8: '', score9: '', score10: '', total: '',
-*/
+
+const data = [
+  { year: '1950', population: 2.525 },
+  { year: '1960', population: 3.018 },
+  { year: '1970', population: 3.682 },
+  { year: '1980', population: 4.440 },
+  { year: '1990', population: 5.310 },
+  { year: '2000', population: 6.127 },
+  { year: '2010', population: 6.930 },
+];
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -108,7 +109,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('finance1')}
               className={getClassNamesFor('finance1')}
             >
-              Profit Margin (A)
+              (A) Profit Margin
             </button>
           </th>
           <th>
@@ -117,7 +118,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('finance2')}
               className={getClassNamesFor('finance2')}
             >
-              Sales Volume Projection (B)
+              (B) Sales Volume Projection
             </button>  
           </th>
           <th>
@@ -126,7 +127,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('timeline1')}
               className={getClassNamesFor('timeline1')}
             >
-              Overdue Tasks (%) (C)
+              (C) Overdue Tasks (%)
             </button>  
           </th>
           <th>
@@ -135,7 +136,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('product1')}
               className={getClassNamesFor('product1')}
             >
-             Failure Rate (D)
+             (D) Failure Rate
             </button>  
           </th>
           <th>
@@ -144,7 +145,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('product2')}
               className={getClassNamesFor('product2')}
             >
-            Customer Complaints (E)
+            (E) Customer Complaints
             </button>  
           </th>
           <th>
@@ -153,7 +154,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('brand1')}
               className={getClassNamesFor('brand1')}
             >
-            Market Share (F)
+            (F) Market Share
             </button> 
           </th>
           <th>
@@ -162,7 +163,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('brand2')}
               className={getClassNamesFor('brand2')}
             >
-              Market Growth Projection (G)
+              (G) Market Growth Projection
             </button> 
           </th>
           <th>
@@ -171,7 +172,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('human1')}
               className={getClassNamesFor('human1')}
             >
-              Capacity Allocation (H)
+             (H) Capacity Allocation
             </button> 
           </th>
           <th>
@@ -180,7 +181,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('production1')}
               className={getClassNamesFor('production1')}
             >
-              Energy Consumption (I)
+              (I) Energy Consumption
             </button> 
           </th>
           <th>
@@ -189,7 +190,7 @@ const ProductTable = (props) => {
               onClick={() => requestSort('production2')}
               className={getClassNamesFor('production2')}
             >
-              Rework Percentage (J)
+              (J) Rework Percentage
             </button> 
           </th>
           <th>
@@ -236,39 +237,11 @@ const ProductTable = (props) => {
   );
 };
 
-/*
-class rank extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ranking1: '',
-      ranking2: '',
-      ranking3: '',
-      ranking4: '',
-      ranking5: '',
-      ranking6: '',
-      ranking7: '',
-      ranking8: '',
-      ranking9: '',
-      ranking10: '',
-    };
-  }
-
-  render() {
-
-    return (
-
-    )
-  }
-}
-*/
-
-
 class PITable extends Component {
   constructor(props) {
       super(props);
 
-      this.state = { ...INITIAL_STATE, financialGoal: '' , };
+      this.state = { ...INITIAL_STATE, financialGoal: '' , data };
   }
 
     onChange = event => {
@@ -300,55 +273,119 @@ class PITable extends Component {
          II, IJ,
          JJ, 
     } = this.state;
-
-/*
-    const {
-        AA, AB, AC, AD, AE, AF, AG, AH, AI, AJ, 
-        BA, BB, BC, BD, BE, BF, BG, BH, BI, BJ,
-        CA, CB, CC, CD, CE, CF, CG, CH, CI, CJ,
-        DA, DB, DC, DD, DE, DF, DG, DH, DI, DJ,
-        EA, EB, EC, ED, EE, EF, EG, EH, EI, EJ,
-        FA, FB, FC, FD, FE, FF, FG, FH, FI, FJ,
-        GA, GB, GC, GD, GE, GF, GG, GH, GI, GJ,
-        HA, HB, HC, HD, HE, HF, HG, HH, HI, HJ,
-        IA, IB, IC, ID, IE, IF, IG, IH, II, IJ,
-        JA, JB, JC, JD, JE, JF, JG, JH, JI, JJ,
-        error, 
-    } = this.state;
-
-    var {
-      ranking1, ranking2,
-  } = this.state;
-
-
-    const isInvalid =
-    AA !== '' || AB !== ''|| AC !== '' || AD !== '' || AE !== '' || AF !== '' || AG !== '' || AH !== '' || AI !== '' || AJ !== '' ||
-    BA !== '' || BB !== ''|| BC !== '' || BD !== '' || BE !== '' || BF !== '' || BG !== '' || BH !== '' || BI !== '' || BJ !== '' ||
-    CA !== '' || CB !== ''|| CC !== '' || CD !== '' || CE !== '' || CF !== '' || CG !== '' || CH !== '' || CI !== '' || CJ !== '' ||
-    DA !== '' || DB !== ''|| DC !== '' || DD !== '' || DE !== '' || DF !== '' || DG !== '' || DH !== '' || DI !== '' || DJ !== '' ||
-    EA !== '' || EB !== ''|| EC !== '' || ED !== '' || EE !== '' || EF !== '' || EG !== '' || EH !== '' || EI !== '' || EJ !== '' ||
-    FA !== '' || FB !== ''|| FC !== '' || FD !== '' || FE !== '' || FF !== '' || FG !== '' || FH !== '' || FI !== '' || FJ !== '' ||
-    GA !== '' || GB !== ''|| GC !== '' || GD !== '' || GE !== '' || GF !== '' || GG !== '' || GH !== '' || GI !== '' || GJ !== '' ||
-    HA !== '' || HB !== ''|| HC !== '' || HD !== '' || HE !== '' || HF !== '' || HG !== '' || HH !== '' || HI !== '' || HJ !== '' ||
-    IA !== '' || IB !== ''|| IC !== '' || ID !== '' || IE !== '' || IF !== '' || IG !== '' || IH !== '' || II !== '' || IJ !== '' ||
-    JA !== '' || JB !== ''|| JC !== '' || JD !== '' || JE !== '' || JF !== '' || JG !== '' || JH !== '' || JI !== '' || JJ !== '' 
-    ;
-*/
-
     
-
     const total = AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ + (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ + 
     (1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ + (1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ +
     (1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ + (1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ +
     (1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ + (1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ +
     (1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ + (1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ;
 
+    const score1 = (AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ/total*100).toFixed(3);
+    const score2 = ((1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ/total*100).toFixed(3);
+    const score3 = ((1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ/total*100).toFixed(3);
+    const score4 = ((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ/total*100).toFixed(3);
+    const score5 = ((1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ/total*100).toFixed(3);
+    const score6 = ((1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ/total*100).toFixed(3);
+    const score7 = ((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ/total*100).toFixed(3);
+    const score8 = ((1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ/total*100).toFixed(3);
+    const score9 = ((1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ/total*100).toFixed(3);
+    const score10 = ((1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ/total*100).toFixed(3);
+    
+/*
+    const data = [
+      {
+        name: "Profit Margin",
+        criteria: score1,
+      },
+      {
+        name: "Sales Volume Projection",
+        criteria: score2,
+      },
+      {
+        name: "Overdue Tasks",
+        criteria: score3,
+      },
+      {
+        name: "Failure Rate(%)",
+        criteria: score4,
+      },
+      {
+        name: "Customer Complaints",
+        criteria: score5,
+      },
+      {
+        name: "Market Share",
+        criteria: score6,
+      },
+      {
+        name: "Market Growth Projection",
+        criteria: score7,
+      },
+      {
+        name: "Capacity Allocation",
+        criteria: score8,
+      },
+      {
+        name: "Energy Consumption",
+        criteria: score9,
+      },
+      {
+        name: "Rework Percentage",
+        criteria: score10,
+      },
+    ];
+*/
+const data = [
+  {
+    name: "A",
+    Criteria: score1,
+  },
+  {
+    name: "B",
+    Criteria: score2,
+  },
+  {
+    name: "C",
+    Criteria: score3,
+  },
+  {
+    name: "D",
+    Criteria: score4,
+  },
+  {
+    name: "E",
+    Criteria: score5,
+  },
+  {
+    name: "F",
+    Criteria: score6,
+  },
+  {
+    name: "G",
+    Criteria: score7,
+  },
+  {
+    name: "H",
+    Criteria: score8,
+  },
+  {
+    name: "I",
+    Criteria: score9,
+  },
+  {
+    name: "J",
+    Criteria: score10,
+  },
+];
+
+
+
     return (
       <Container className="App">
         <div>
           <ProductTable
             products={[
-              { id: 1, criteria: '1. Finance', indicators:'Profit Margin (A)' ,
+              { id: 1, criteria: '1. Finance', indicators:'(A) Profit Margin' ,
                 finance1: <TextField  required label="AA" variant="outlined" name='AA' value={AA} type="number" inputProps={{ maxLength: 3 }} onChange={this.onChange} margin="normal"/>,
                 finance2: <TextField required label="AB" variant="outlined" name='AB' value={AB} type="number" onChange={this.onChange} margin="normal"/>,
                 timeline1: <TextField required label="AC" variant="outlined" name='AC' value={AC} type="number" onChange={this.onChange} margin="normal"/>,
@@ -362,7 +399,7 @@ class PITable extends Component {
                 score : (AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ).toFixed(1),
                 ranking: ((AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 2, criteria: '2. Finance', indicators:'Sales Volume Projection (B)' , 
+              { id: 2, criteria: '2. Finance', indicators:'(B) Sales Volume Projection' , 
                 finance1: <TextField value={(1/AB).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField required label="BB" variant="outlined" name='BB' value={BB} type="number" onChange={this.onChange} margin="normal"/>,
                 timeline1: <TextField required label="BC" variant="outlined" name='BC' value={BC} type="number" onChange={this.onChange} margin="normal"/>,
@@ -376,7 +413,7 @@ class PITable extends Component {
                 score : ((1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ).toFixed(1), 
                 ranking: (((1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 3, criteria: '3. Timeline', indicators:'Overdue Tasks (%) (C)',
+              { id: 3, criteria: '3. Timeline', indicators:'(C) Overdue Tasks (%)',
                 finance1:<TextField value={(1/AC).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BC).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField required label="CC" variant="outlined" name='CC' value={CC} type="number" onChange={this.onChange} margin="normal"/>,
@@ -390,7 +427,7 @@ class PITable extends Component {
                 score : ((1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ).toFixed(1), 
                 ranking: (((1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 4, criteria: '4. Product Performance', indicators:'Failure Rate (D)',
+              { id: 4, criteria: '4. Product Performance', indicators:'(D) Failure Rate',
                 finance1: <TextField value={(1/AD).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BD).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CD).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -404,7 +441,7 @@ class PITable extends Component {
                 score : ((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ).toFixed(1), 
                 ranking: (((1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 5, criteria: '5. Product Performance', indicators:'Customer Complaints (E)',
+              { id: 5, criteria: '5. Product Performance', indicators:'(E) Customer Complaints',
                 finance1: <TextField value={(1/AE).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BE).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CE).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -418,7 +455,7 @@ class PITable extends Component {
                 score : ((1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ).toFixed(1), 
                 ranking: (((1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 6, criteria: '6. Brand Performance', indicators:'Market Share (F)' ,
+              { id: 6, criteria: '6. Brand Performance', indicators:'(F) Market Share' ,
                 finance1: <TextField value={(1/AF).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BF).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CF).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -432,7 +469,7 @@ class PITable extends Component {
                 score : ((1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ).toFixed(1), 
                 ranking: (((1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 7, criteria: '7. Brand Performance', indicators:'Market Growth Projection (G)' ,
+              { id: 7, criteria: '7. Brand Performance', indicators:'(G) Market Growth Projection' ,
                 finance1: <TextField value={(1/AG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CG).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -446,7 +483,7 @@ class PITable extends Component {
                 score : ((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ).toFixed(1), 
                 ranking: (((1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 8, criteria: '8. Human Resource', indicators:'Capacity Allocation (H)' ,
+              { id: 8, criteria: '8. Human Resource', indicators:'(H) Capacity Allocation' ,
                 finance1: <TextField value={(1/AH).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BH).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CH).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -460,7 +497,7 @@ class PITable extends Component {
                 score :((1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ).toFixed(1), 
                 ranking: (((1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 9, criteria: '9. Production', indicators:'Energy Consumption (I)',
+              { id: 9, criteria: '9. Production', indicators:'(I) Energy Consumption',
                 finance1: <TextField value={(1/AI).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BI).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CI).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -474,7 +511,7 @@ class PITable extends Component {
                 score : ((1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ).toFixed(1), 
                 ranking: (((1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ/total*100).toFixed(3)+'%'), 
               },
-              { id: 10, criteria: '10. Production', indicators:'Rework Percentage (J)',
+              { id: 10, criteria: '10. Production', indicators:'(J) Rework Percentage',
                 finance1: <TextField value={(1/AJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 finance2: <TextField value={(1/BJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
                 timeline1: <TextField value={(1/CJ).toFixed(1)} type="number" maxLength={3} margin="normal"/>,
@@ -497,63 +534,37 @@ class PITable extends Component {
               },
             ]}
           />
+          <br></br>
+          <h1 className='ha'>Graph of PI Relative Importance (%)</h1>
+          <br></br>
+          <Grid style = {{textAlign: 'center', padding: '50px', marginTop: '0px', paddingTop: '0px'}} >
+          <BarChart
+            width={1000}
+            height={600}
+            data={data}
+            style = {{ paddingTop: '20px',  paddingBottom: '0px', paddingLeft: '5%', paddingRight: '5%'}}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="Criteria" fill="#82ca9d"/>
+          </BarChart>
+          </Grid>
         </div>
         <br></br>
       </Container>
     );
   }
 }
-/*
-        <form onSubmit={this.onSubmit}>
- //         <Grid style = {{textAlign: 'center'}}>                                          
-            <StyledButton 
-              /*disabled={isInvalid}*/
-   //           type="submit">
-   //               Give me my rankings!
-   //         </StyledButton>
-  //        </Grid> 
-   //       {error && <p>{error.message}</p>}
-  //      </form>
 
-
-//finance1: <input name="BA" value={BA} type="number" pattern="[0-9]*" onInput={this.onHandleChange.bind(this)} value={this.state.financialGoal} />
-
-/*const StyledButton = withStyles({
-  root: {
-    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-    borderRadius: 3,
-    border: 0,
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    fontSize: '1.5rem',
-  },
-  label: {
-      textTransform: 'capitalize',
-  },
-  
-})(Button);
-*/
 export default PITable;
 
 /*
-  { id: 11, criteria: 'Total Score',
-  score :  AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ + (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ + 
-          (1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ + (1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ +
-          (1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ + (1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ +
-          (1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ + (1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ +
-          (1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ + (1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ,
-},
+            margin={{
+              top: 5,
+              left: 225,
+              bottom: 5
+            }}
 
-    const score1 = AA*AB*AC*AD*AE*AF*AG*AH*AI*AJ;
-    const score2 = (1/AB)*BB*BC*BD*BE*BF*BG*BH*BI*BJ;
-    const score3 = (1/AC)*(1/BC)*CC*CD*CE*CF*CG*CH*CI*CJ; 
-    const score4 = (1/AD)*(1/BD)*(1/CD)*DD*DE*DF*DG*DH*DI*DJ;
-    const score5 = (1/AE)*(1/BE)*(1/CE)*(1/DE)*EE*EF*EG*EH*EI*EJ;
-    const score6 = (1/AF)*(1/BF)*(1/CF)*(1/DF)*(1/EF)*FF*FG*FH*FI*FJ; 
-    const score7 = (1/AG)*(1/BG)*(1/CG)*(1/DG)*(1/EG)*(1/FG)*GG*GH*GI*GJ;
-    const score8 = (1/AH)*(1/BH)*(1/CH)*(1/DH)*(1/EH)*(1/FH)*(1/GH)*HH*HI*HJ;
-    const score9 = (1/AI)*(1/BI)*(1/CI)*(1/DI)*(1/EI)*(1/FI)*(1/GI)*(1/HI)*II*IJ;
-    const score10 = (1/AJ)*(1/BJ)*(1/CJ)*(1/DJ)*(1/EJ)*(1/FJ)*(1/GJ)*(1/HJ)*(1/IJ)*JJ;
 */

@@ -1,18 +1,19 @@
 h1 {
   text-align: center;
-  font-size: 3vw;
+  font-size: 2.5vw;
   margin: 10px;
   margin-top: 0px;
+  padding-bottom: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 h2 {
-  text-align: center;
-  font-size: 2vw;
+  text-align: left;
+  font-size: 1vw;
   margin: 10px;
   font-weight: 800;
   padding-left: 5%;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 li:not(:last-child) {
@@ -25,7 +26,9 @@ li {
 }
 
 ul {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   margin-left: 0;
   padding: 0;
+  font-size: 1.5vw;
+  font-family: "Times New Roman", Times, serif;
 }

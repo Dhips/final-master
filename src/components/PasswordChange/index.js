@@ -126,7 +126,7 @@ const StyledButton = withStyles({
 
 const PasswordChangeLink = () => (
     <div>
-        <p className="link">
+        <p style={{ alignText:'center', justifyContent: 'center',  fontSize:'1.5vw', marginBottom: '5px', paddingLeft:'42%', paddingTop:'5px' }}>
         <Link to={ROUTES.PASSWORD_CHANGE}><b>Change Your Password?</b></Link>
         </p>
     </div>

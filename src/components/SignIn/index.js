@@ -19,6 +19,7 @@ const SignInPage = () => (
 <div>
     <SignInForm />
     <PasswordForgetLink />
+    <h4 style={{margin:'10px', fontSize: '1.5vw', marginTop:'15px', marginBottom: '15px'}}>or</h4>
     <SignUpLink />
 </div>
 );
@@ -43,7 +44,7 @@ class SignInFormBase extends Component {
             .doSignInWithEmailAndPassword(email,password)
             .then(() => {
                 this.setState({ ...INITIAL_STATE });
-                this.props.history.push( ROUTES.HOME );
+                this.props.history.push( ROUTES.HELP );
             })
             .catch(error => {
                 this.setState({ error });
@@ -64,9 +65,9 @@ class SignInFormBase extends Component {
         return (
              <Container maxWidth='sm'>
                 <div className = "input">
-                    <img src={MyDSM} className= "images" alt="MyDSM"/>
+                    <img src={MyDSM} className= "pictur" alt="MyDSM"/>
 
-                    <h1 className = "title">Sign In</h1>          
+                    <h1 className = "ha">Sign In</h1>          
  
                     <form onSubmit={this.onSubmit}>
                         <TextField 
@@ -94,14 +95,13 @@ class SignInFormBase extends Component {
                             label="Password"
                             autoFocus
                         />
-                    <Grid style = {{textAlign: 'center'}}>
+                    <Grid style = {{textAlign: 'center', paddingTop: '10px'}}>
                         <StyledButton
                             disabled={isInvalid} 
                             type="submit" >
                             Sign In
                         </StyledButton>
                     </Grid>
-
                     {error && <p>{error.message}</p>}
                     </form>
                 </div>

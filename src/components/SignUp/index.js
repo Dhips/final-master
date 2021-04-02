@@ -93,9 +93,9 @@ class SignUpFormBase extends Component {
         return(
             <Container maxWidth='sm' >
                 <div>
-                <img className= "images" src={MyDSM} alt="MyDSM" />                    
+                <img className= "pictur" src={MyDSM} alt="MyDSM" />                    
 
-                    <h1 className= "title">Sign Up</h1> 
+                    <h1 className= "ha">Sign Up</h1> 
                     
                     <hr />
                     <form onSubmit={this.onSubmit}>
@@ -149,7 +149,7 @@ class SignUpFormBase extends Component {
                             label="Reconfirm Password"
                             autoFocus
                         />             
-                        <Grid style = {{textAlign: 'center'}}>                                          
+                        <Grid style = {{textAlign: 'center', paddingTop: '10px'}}>                                          
                             <StyledButton 
                                 disabled={isInvalid} 
                                 type="submit">
@@ -184,12 +184,9 @@ const StyledButton = withStyles({
 
 const SignUpLink = () => (
     <div>
-        <h2 className = "signUp">
-           Or
-        </h2>
-        <h2 className= "signUp">
-           <Link to={ROUTES.SIGN_UP}>Create An Account!</Link>   
-        </h2>
+        <p style={{ alignText:'center', fontSize:'1.5vw', marginBottom: '5px', paddingLeft:'43.5%'}}>
+        <Link to={ROUTES.SIGN_UP}><b>Create An Account!</b></Link>   
+        </p>
     </div>
 );
 
@@ -198,34 +195,3 @@ const SignUpLink = () => (
 export default SignUpPage;
 
 export { SignUpForm, SignUpLink };
-
-/*
-                    <input 
-                        name="username"
-                        value={username}
-                        onChange={this.onChange}
-                        type="text"
-                        placeholder="Full Name"
-                    />
-                    <input 
-                        name="email"
-                        value={email}
-                        onChange={this.onChange}
-                        type="text"
-                        placeholder="Email Address"
-                    />
-                    <input 
-                        name="passwordOne"
-                        value={passwordOne}
-                        onChange={this.onChange}
-                        type="password"
-                        placeholder="Password"
-                    />
-                    <input 
-                        name="passwordTwo"
-                        value={passwordTwo}
-                        onChange={this.onChange}
-                        type="password"
-                        placeholder="Confirm Password"
-                    /> 
-*/
