@@ -1,7 +1,7 @@
 //Accumalation of DSM Model
 import React from 'react';
 import SWOT from '../SWOT/table';
-import DSMImg from '../../images/DSM.jpg';
+//import DSMImg from '../../images/DSM.jpg';
 import './index.css';
 import { Link } from 'react-router-dom';
 
@@ -14,8 +14,12 @@ import { makeStyles } from "@material-ui/core/styles";
 export default function SWOTinput () {
     const classes = useStyles();
 
+//<img className='pictur' src={DSMImg} alt="Decision Support Model" />
     return(
         <div className='space'>
+            <div class="center" style ={{paddingBottom:'10px'}}>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vH9_AFg_Uk8?start=63" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <h1 className='ha'>SWOT Analysis for </h1>
             <Grid style = {{textAlign: 'center'}}>    
                 <TextField 
@@ -24,13 +28,6 @@ export default function SWOTinput () {
                     inputProps={{min: 0, style: { textAlign: 'center' }}} 
                     InputProps={{ className: classes.inputRoot }}
                 />
-            
-            <img 
-                className='pictur' 
-                src={DSMImg} 
-                alt="Decision Support Model" 
-            />
-            <h2 className='hb' style = {{ paddingTop: '10px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>
             </Grid>
             <SWOT />
             <br></br>
@@ -40,6 +37,7 @@ export default function SWOTinput () {
                     Print this out!
                 </StyledButton>
                 <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '5%', paddingRight: '5%'}}>More detailed SWOT Analaysis, Background and Literary SWOT Documentation can be found in <Link to="../documentation">Documentation</Link></h3>
+                <h2 className='hb' style = {{ paddingTop: '20px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>
             </Grid>
             
         </div>
