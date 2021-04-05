@@ -121,7 +121,6 @@ function Navigation({ firebase }) {
                       <ListItemText 
                           primary={"Home"} 
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose} 
                       />
                     </ListItem>
                     <ListItem 
@@ -134,7 +133,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"Account"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem>
                       <ListItem 
@@ -148,7 +146,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"SWOT"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem> 
                       <ListItem 
@@ -161,7 +158,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"DSM"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem> 
                       <ListItem 
@@ -174,7 +170,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"Feedback"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem> 
                       <ListItem 
@@ -187,7 +182,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"Documentation"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem>
                       <ListItem 
@@ -200,7 +194,6 @@ function Navigation({ firebase }) {
                         <ListItemText 
                           primary={"Help & Support"} 
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose} 
                           />
                       </ListItem>
                       <ListItem 
@@ -213,7 +206,6 @@ function Navigation({ firebase }) {
                         <ListItemText 
                           primary={"FAQ"} 
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose} 
                           />
                       </ListItem>
                       <ListItem 
@@ -225,8 +217,7 @@ function Navigation({ firebase }) {
                         </ListItemIcon>
                         <ListItemText 
                           primary={"Contact Us"} 
-                          onClick={handleDrawerClose}
-                          onClose={handleDrawerClose} 
+                          onClick={handleDrawerClose} 
                           />
                       </ListItem>    
                       <ListItem 
@@ -239,7 +230,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                           primary={"Sign Out"}
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose}
                         />
                       </ListItem>                    
                     </div>
@@ -255,7 +245,6 @@ function Navigation({ firebase }) {
                       <ListItemText 
                         primary={"Home"} 
                         onClick={handleDrawerClose}
-                        onClose={handleDrawerClose} 
                     />
                   </ListItem>
                   <ListItem
@@ -269,7 +258,6 @@ function Navigation({ firebase }) {
                         <ListItemText
                             primary={"Sign In"}
                             onClick={handleDrawerClose}
-                            onClose={handleDrawerClose}
                         />
                     </ListItem>
                   <ListItem 
@@ -282,7 +270,6 @@ function Navigation({ firebase }) {
                       <ListItemText 
                         primary={"Help & Support"} 
                         onClick={handleDrawerClose}
-                        onClose={handleDrawerClose} 
                         />
                     </ListItem>
                     <ListItem 
@@ -295,7 +282,6 @@ function Navigation({ firebase }) {
                       <ListItemText 
                         primary={"FAQ"} 
                         onClick={handleDrawerClose}
-                        onClose={handleDrawerClose} 
                         />
                     </ListItem>
                     <ListItem 
@@ -308,7 +294,6 @@ function Navigation({ firebase }) {
                         <ListItemText 
                           primary={"Contact Us"} 
                           onClick={handleDrawerClose}
-                          onClose={handleDrawerClose} 
                           />
                       </ListItem>
                 </div>

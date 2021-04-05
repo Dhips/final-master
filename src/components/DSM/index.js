@@ -35,8 +35,8 @@ export default function DSM () {
             <PI />
             <h1 className='ha'>Performance Indicator Ranking</h1>
             <br></br>
-            <h2 InputProps={{ className: classes.inputRoot }} className='hb'>Key in a value between 1-5 in the boxes with '*' if they are important</h2>
-            <h2 className='hb'>Then click on the importance ratio to rank them and view the results in the graph below</h2>
+            <h2 InputProps={{ className: classes.inputRoot }} className='hb'>For the PI's you marked as important in the section above - Key in a value between 1-5 in the boxes with an '*'</h2>
+            <h2 className='hb'>Once you are done, click on the importance ratio to rank them and view the results in the graph below</h2>
             <PITable />
             <Grid style = {{textAlign: 'center', padding: '50px', marginTop: '-100px', paddingTop: '-10px'}} >    
                 <StyledButton
