@@ -41,7 +41,7 @@ export default function DSM () {
             <Grid style = {{textAlign: 'center', padding: '50px', marginTop: '-100px', paddingTop: '-10px'}} >    
                 <StyledButton
                 onClick={() => window.print()} >
-                    Print this out!
+                    Save/Print this out!
                 </StyledButton>
             <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '14%', paddingRight: '5%'}}>More detailed Background and Literary PI Documentation can be found <Link to="../documentation">Documentation</Link></h3>
             <h2 className='hb' style = {{ paddingTop: '20px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>

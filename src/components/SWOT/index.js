@@ -34,7 +34,7 @@ export default function SWOTinput () {
             <Grid style = {{textAlign: 'center'}} >
                 <StyledButton
                 onClick={() => window.print()} >
-                    Print this out!
+                    Save/Print this out!
                 </StyledButton>
                 <h3 className='hc'style = {{ paddingTop: '20px',  paddingLeft: '5%', paddingRight: '5%'}}>More detailed SWOT Analaysis, Background and Literary SWOT Documentation can be found in <Link to="../documentation">Documentation</Link></h3>
                 <h2 className='hb' style = {{ paddingTop: '20px',  paddingLeft: '6%', paddingRight: '5%'}}>Need <Link to="../help">help</Link> using this page?</h2>

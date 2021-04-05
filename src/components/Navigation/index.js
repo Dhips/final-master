@@ -64,7 +64,8 @@ function Navigation({ firebase }) {
                       style={{
                         display:"flex", 
                         justifyContent:"space-between", 
-                        maxHeight: 30
+                        maxHeight: 30,
+                        background: '#2D5289',
                       }}>
                       <div>
                         <MenuItem edge="start">
